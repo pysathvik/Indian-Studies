@@ -1,0 +1,230 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* EcoVision Light Theme - Fresh and Clean */
+  --background: oklch(0.98 0.005 145);
+  --foreground: oklch(0.15 0.02 160);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 160);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 160);
+  --primary: oklch(0.55 0.15 160);
+  --primary-foreground: oklch(0.98 0.005 145);
+  --secondary: oklch(0.92 0.03 160);
+  --secondary-foreground: oklch(0.25 0.05 160);
+  --muted: oklch(0.95 0.01 160);
+  --muted-foreground: oklch(0.45 0.02 160);
+  --accent: oklch(0.65 0.18 145);
+  --accent-foreground: oklch(0.98 0.005 145);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.02 160);
+  --input: oklch(0.92 0.01 160);
+  --ring: oklch(0.55 0.15 160);
+  
+  /* Chart colors - nature inspired */
+  --chart-1: oklch(0.55 0.15 160);
+  --chart-2: oklch(0.65 0.18 145);
+  --chart-3: oklch(0.6 0.12 200);
+  --chart-4: oklch(0.7 0.15 85);
+  --chart-5: oklch(0.55 0.18 25);
+  
+  --radius: 0.75rem;
+  
+  /* Glass effect colors */
+  --glass: oklch(1 0 0 / 0.7);
+  --glass-border: oklch(1 0 0 / 0.3);
+  --glow: oklch(0.55 0.15 160 / 0.3);
+}
+
+.dark {
+  /* EcoVision Dark Theme - Deep and Immersive */
+  --background: oklch(0.12 0.02 220);
+  --foreground: oklch(0.95 0.01 160);
+  --card: oklch(0.16 0.02 220);
+  --card-foreground: oklch(0.95 0.01 160);
+  --popover: oklch(0.16 0.02 220);
+  --popover-foreground: oklch(0.95 0.01 160);
+  --primary: oklch(0.7 0.18 160);
+  --primary-foreground: oklch(0.12 0.02 220);
+  --secondary: oklch(0.22 0.03 220);
+  --secondary-foreground: oklch(0.9 0.01 160);
+  --muted: oklch(0.2 0.02 220);
+  --muted-foreground: oklch(0.65 0.02 160);
+  --accent: oklch(0.65 0.2 145);
+  --accent-foreground: oklch(0.12 0.02 220);
+  --destructive: oklch(0.45 0.18 25);
+  --destructive-foreground: oklch(0.95 0 0);
+  --border: oklch(0.28 0.02 220);
+  --input: oklch(0.22 0.02 220);
+  --ring: oklch(0.7 0.18 160);
+  
+  /* Chart colors - vibrant on dark */
+  --chart-1: oklch(0.7 0.18 160);
+  --chart-2: oklch(0.65 0.2 145);
+  --chart-3: oklch(0.6 0.15 200);
+  --chart-4: oklch(0.75 0.18 85);
+  --chart-5: oklch(0.6 0.2 25);
+  
+  /* Glass effect colors - dark mode */
+  --glass: oklch(0.2 0.02 220 / 0.6);
+  --glass-border: oklch(0.4 0.02 220 / 0.3);
+  --glow: oklch(0.7 0.18 160 / 0.25);
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-glow: var(--glow);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Glassmorphism utilities */
+@layer utilities {
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .glass-strong {
+    background: var(--glass);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .glow {
+    box-shadow: 0 0 40px var(--glow);
+  }
+  
+  .glow-sm {
+    box-shadow: 0 0 20px var(--glow);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Particle animation background */
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: particle-float 15s ease-in-out infinite;
+}
+
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
