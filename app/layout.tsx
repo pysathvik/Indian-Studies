@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ChatWidget } from '@/components/chat/chat-widget'
+import { ChatBot } from '@/components/ChatBot'
 import './globals.css'
 
 const geist = Geist({ 
@@ -17,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'EcoVision India | Climate Change and Sustainability',
-  description: 'Explore India\'s journey through industrialization, climate change challenges, and sustainable solutions for a greener future. An educational platform designed and developed by Sathvik.',
+  description: 'Explore India\'s journey through industrialization, climate change challenges, and sustainable solutions for a greener future. An educational platform designed and developed by Sat[...]',
   keywords: ['climate change', 'India', 'sustainability', 'industrialization', 'environment', 'renewable energy', 'green future'],
   authors: [{ name: 'Sathvik' }],
   creator: 'Sathvik',
@@ -71,6 +72,7 @@ export default function RootLayout({
         >
           {children}
           <ChatWidget />
+          <ChatBot />
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
