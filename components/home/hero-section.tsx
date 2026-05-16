@@ -85,7 +85,7 @@ export function HeroSection() {
           {/* Signature */}
           <p className="text-sm text-muted-foreground pt-8">
             Designed and Developed{" "}
-            <span className="text-primary font-medium">~by Gowtham Allu</span>
+            <span className="text-primary font-medium">~by Sathvik</span>
           </p>
         </div>
       </div>
